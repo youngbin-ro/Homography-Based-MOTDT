@@ -108,3 +108,6 @@ venv.bak/
 *.o
 data
 .idea
+
+datasets/
+gifs/

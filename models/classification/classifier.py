@@ -51,9 +51,6 @@ class PatchClassifier(object):
 
         net_utils.load_net(ckpt, model)
         model = model.eval()
-
-        print(self.gpu)
-
         self.model = model.cuda(self.gpu)
         print('load cls model from: {}'.format(ckpt))
         self.score_map = None

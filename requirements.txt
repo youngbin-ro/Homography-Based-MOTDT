@@ -2,11 +2,9 @@ numpy
 h5py
 Cython
 scipy
-torch==0.4.0
-opencv-python
+pytorch=0.4.0
+opencv
 cffi
-sklearn
+scikit-learn
 numba
 torchvision
-fire
-motmetrics

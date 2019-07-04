@@ -57,7 +57,6 @@ class MOTSeq(data.Dataset):
 
         self.im_root = os.path.join(self.root, self.seq_name, 'img1')
         self.im_names = sorted([name for name in os.listdir(self.im_root) if os.path.splitext(name)[-1] == '.jpg'])
-
         if det_root is None:
             self.det_file = os.path.join(self.root, self.seq_name, 'det', 'det.txt')
         else:

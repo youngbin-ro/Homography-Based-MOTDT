@@ -2,7 +2,9 @@ import os
 import cv2
 import logging
 import motmetrics as mm
-from tracker.mot_tracker import OnlineTracker
+#from tracker.VisDrone_tracker import OnlineTracker
+from tracker.MOT17_tracker import OnlineTracker
+#from tracker.MOTDT_original_tracker import OnlineTracker
 
 from datasets.mot_seq import get_loader
 from utils import visualization as vis
@@ -10,6 +12,7 @@ from utils.log import logger
 from utils.timer import Timer
 from utils.evaluation import Evaluator
 
+cur_dir = os.getcwd()
 
 def mkdirs(path):
     if os.path.exists(path):
@@ -96,8 +99,8 @@ def main(data_root='/data/MOT16/train', det_root=None,
     # run tracking
     accs = []
     for seq in seqs:
-        output_dir = os.path.join(data_root, 'outputs', seq) if save_image else None
-
+        output_dir = os.path.join(data_root, 'outputs_revised', seq) if save_image else None
+        print("seq : ", seq)
         logger.info('start seq: {}'.format(seq))
         loader = get_loader(data_root, det_root, seq)
         result_filename = os.path.join(result_root, '{}.txt'.format(seq))
@@ -108,7 +111,6 @@ def main(data_root='/data/MOT16/train', det_root=None,
         logger.info('Evaluate seq: {}'.format(seq))
         evaluator = Evaluator(data_root, seq, data_type)
         accs.append(evaluator.eval_file(result_filename))
-
 
     # get summary
     # metrics = ['mota', 'num_switches', 'idp', 'idr', 'idf1', 'precision', 'recall']
@@ -122,8 +124,7 @@ def main(data_root='/data/MOT16/train', det_root=None,
         namemap=mm.io.motchallenge_metric_names
     )
     print(strsummary)
-    filename = "summary_" + exp_name + ".xlsx"
-    Evaluator.save_summary(summary, os.path.join(result_root, filename))
+    Evaluator.save_summary(summary, os.path.join(result_root, f'summary_{exp_name}.xlsx'))
 
     # # eval
     # try:
@@ -147,16 +148,27 @@ if __name__ == '__main__':
     # import fire
     # fire.Fire(main)
 
-    """
-    seqs_str = '''MOT16-02
-                MOT16-05
-                MOT16-09
-                MOT16-11
-                MOT16-13'''
-    """
-
-    seqs_str = """uav0000074_10080_v
-                uav0000074_11856_v"""
+    seqs_str = '''
+                MOT17-02-FRCNN
+                MOT17-05-FRCNN
+                MOT17-09-FRCNN
+                MOT17-11-FRCNN
+                MOT17-13-FRCNN
+                '''
+    seqs_one = "MOT17-02-FRCNN"
+    visdrone = """
+               uav0000086_00000_v
+               uav0000117_02622_v
+               uav0000137_00458_v
+               uav0000182_00000_v
+               uav0000305_00000_v
+               uav0000339_00001_v
+               """
+    visdrone_one = "uav0000268_05773_v"
     seqs = [seq.strip() for seq in seqs_str.split()]
-    cur_root = os.getcwd()
-    main(data_root=cur_root+'/data/MOT16/train', seqs=seqs, exp_name='mot16_val', show_image=True)
+
+    main(data_root='./data/MOT17/train',
+         seqs=seqs,
+         exp_name='MOT17_revised_img_save',
+         save_image=True,
+         show_image=False)
