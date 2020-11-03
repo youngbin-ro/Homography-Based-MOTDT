@@ -5,6 +5,8 @@
   - paper: https://arxiv.org/abs/1809.04427
 - For more information, please refer to the [report](https://github.com/youngbin-ro/Homography-Based-MOTDT/blob/master/report.pdf) file in this repository
 
+<br/>
+
 ## Overview
 ![overview](https://github.com/youngbin-ro/Homography-Based-MOTDT/blob/master/images/overview.PNG?raw=true)
 
@@ -15,25 +17,22 @@
 - **STEP5**: Create candidates by linearly transforming the existing object at time ```t``` through homography matrix obtained in **STEP4**
 - **STEP6**: Allocate bounding box candidates from **STEP3** and **STEP5** to each object based on IOU and ReIE features.
 
+<br/>
+
 ## Tracking Examples
 
 ### MOT17 Dataset
-##### Original MOTDT
+#### Original MOTDT
 <img style="float: left;" src="https://github.com/youngbin-ro/Homography-Based-MOTDT/blob/master/images/MOT17_original.gif?raw=true">
-
 - The original model does not maintain the track ID of object 1 (turned to 101), which is covered by object 105
 
-##### Proposed Homography Based MOTDT
-
+#### Proposed Homography Based MOTDT
 <img style="float: left;" src="https://github.com/youngbin-ro/Homography-Based-MOTDT/blob/master/images/MOT17_proposed.gif?raw=true">
-
 - Ours maintains the track ID of object 1 and 89 even though they are obscured by object 161 carrying a green bag.
 
-
-
+<br/>
 
 ## Results
-
 #### MOT17 Dataset
 
 |                | **Original** | **Proposed** |
@@ -47,8 +46,6 @@
 | **Num_Fragment** | 706 | **<u>574</u>** |
 |       **MOTA** | **<u>0.428</u>** | 0.421 |
 |       **MOTP** | 0.152 | **<u>0.164</u>** |
-
-<br/>
 
 #### VisDrone Dataset
 
