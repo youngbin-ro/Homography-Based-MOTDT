@@ -22,12 +22,14 @@
 ## Tracking Examples
 
 ### MOT17 Dataset
-#### Original MOTDT
+#### MOTDT (original)
 <img style="float: left;" src="https://github.com/youngbin-ro/Homography-Based-MOTDT/blob/master/images/MOT17_original.gif?raw=true">
+
 - The original model does not maintain the track ID of object 1 (turned to 101), which is covered by object 105
 
-#### Proposed Homography Based MOTDT
+#### Homography Based MOTDT (proposed)
 <img style="float: left;" src="https://github.com/youngbin-ro/Homography-Based-MOTDT/blob/master/images/MOT17_proposed.gif?raw=true">
+
 - Ours maintains the track ID of object 1 and 89 even though they are obscured by object 161 carrying a green bag.
 
 <br/>
