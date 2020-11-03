@@ -25,12 +25,23 @@
 #### MOTDT (original)
 <img style="float: left;" src="https://github.com/youngbin-ro/Homography-Based-MOTDT/blob/master/images/MOT17_original.gif?raw=true">
 
-- The original model does not maintain the track ID of object 1 (turned to 101), which is covered by object 105
+- The original model cannot maintain the track ID of object 1 (turned to 101), which is covered by object 105
 
 #### Homography Based MOTDT (proposed)
 <img style="float: left;" src="https://github.com/youngbin-ro/Homography-Based-MOTDT/blob/master/images/MOT17_proposed.gif?raw=true">
 
 - Ours maintains the track ID of object 1 and 89 even though they are obscured by object 161 carrying a green bag.
+
+### VisDrone Dataset
+#### MOTDT (original)
+<img style="float: left;" src="https://github.com/youngbin-ro/Homography-Based-MOTDT/blob/master/images/VisDrone_original.gif?raw=true">
+
+- The original model cannot maintain the track ID of object 427  (turned to 509) due to a sudden change in camera angle
+
+#### Homography Based MOTDT (proposed)
+<img style="float: left;" src="https://github.com/youngbin-ro/Homography-Based-MOTDT/blob/master/images/VisDrone_proposed.gif?raw=true">
+
+- Ours maintains the track ID of object 515 even though there is a sudden change in camera angle at the end of the clip
 
 <br/>
 
